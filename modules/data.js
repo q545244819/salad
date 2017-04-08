@@ -1,9 +1,9 @@
 const AV = require('leanengine')
 const Data = AV.Object.extend('Data')
 
-const count = 20
+const count = 15
 
-exports.search = (q, page = 0) => {
+exports.search = (q, page = 1) => {
   const query = new AV.SearchQuery('Data')
 
   query.queryString(`*${q}*`)
@@ -16,8 +16,8 @@ exports.search = (q, page = 0) => {
       .then(results => {
         resolve({
           docs: results,
-          hasLastPage: (page === 1 && page > 0) ? false : true,
-          hasMore: query.hasMore(),
+          hasPrevious: (page === 1 && page > 0) ? false : true,
+          hasMore: results.length < count ? false : query.hasMore(),
           currentPage: page
         })
       })

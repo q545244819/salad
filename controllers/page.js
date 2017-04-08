@@ -1,3 +1,5 @@
+const moduleData = require('../modules/data')
+
 exports.index = function* (req, res) {
   res.render('index', {
     user: req.session.user,
@@ -24,9 +26,14 @@ exports.logout = function* (req, res) {
 }
 
 exports.search = function* (req, res) {
+  const query = req.query
+  const data = yield moduleData.search(query.q, parseInt(query.page) || 1)
+  
   res.render('search', {
     user: req.session.user,
-    name: 'search'
+    name: 'search',
+    data,
+    query
   })
 }
 

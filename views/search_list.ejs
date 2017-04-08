@@ -1,18 +1,18 @@
-<% for(var i = 0; i < 15; i++) { %>
+<% for(var i = 0; i < data.docs.length; i += 1) { %>
   <div class="media search-list">
     <div class="media-left">
       <a href="#">
-        <img class="media-object" src="http://ww1.sinaimg.cn/large/6d693dfegy1fefkznioihj209905lmzz.jpg" alt="...">
+        <img class="media-object" src="<%= data.docs[i].get('image') ? data.docs[i].get('image').url : '/image/none.jpg' %>" alt="<%= data.docs[i].get('title') %>">
       </a>
     </div>
     <div class="media-body">
       <h4 class="media-heading">
-        <a href="###">校园文化</a>
-        <a href="###" class="label label-primary get-info">查看资料</a>        
+        <a href="###"><%= data.docs[i].get('title') %></a>
+        <a href="###" class="label label-primary get-info">查看资料</a>   
         <span class="label label-default vote">赞</span>
       </h4>
       <p>
-        打造一个丰富的校园文化市场，因为我发现学生和学校之间缺少一个载体来传播和发展具有自己校园特色的精神文化。先通过手绘明信片的方式...
+        <%= data.docs[i].get('content').slice(0, 100) + '...' %>
       </p>
     </div>
   </div>
@@ -20,8 +20,16 @@
 
 <nav>
   <ul class="pager">
-    <li><a href="#">上一页</a></li>
-    <li>1</li>
-    <li><a href="#">下一页</a></li>
+    <% if (data.hasPrevious) { %>
+      <li><a href="/search?q=<%= query.q %>&page=<%= parseInt(data.currentPage) - 1 %>">上一页</a></li>
+    <% } else { %>
+      <li class="disabled"><a>上一页</a></li>
+    <% } %>
+    <li><%= data.currentPage %></li>
+    <% if (data.hasMore) { %>
+      <li><a href="/search?q=<%= query.q %>&page=<%= parseInt(data.currentPage) + 1 %>">下一页</a></li>
+    <% } else { %>
+      <li class="disabled"><a>下一页</a></li>
+    <% } %>
   </ul>
 </nav>

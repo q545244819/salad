@@ -15,12 +15,14 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8">
-        <div class="input-group search-box">
-          <input type="text" class="form-control" placeholder="大家都在搜人工智能">
-          <span class="input-group-btn">
-            <button class="btn btn-primary" type="button">搜索</button>
-          </span>
-        </div>
+        <form action="/search" method="get">
+          <div class="input-group search-box">
+            <input type="text" class="form-control" name="q" placeholder="大家都在搜人工智能">
+            <span class="input-group-btn">
+              <button class="btn btn-primary" type="submit">搜索</button>
+            </span>
+          </div>
+        </form>
         
         <%- include search_list.ejs %>
       </div>
