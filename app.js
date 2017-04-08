@@ -42,6 +42,7 @@ app.get('/', function (req, res) {
 app.use('/data', require('./routes/data'))
 app.use('/user', require('./routes/user'))
 app.use('/question', require('./routes/question'))
+app.use('/answer', require('./routes/answer'))
 
 // 可以将一类的路由单独保存在一个文件中
 
