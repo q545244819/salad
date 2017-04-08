@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser')
 const cookieSession = require('cookie-session')
 const bodyParser = require('body-parser')
 const AV = require('leanengine')
+const middleware = require('./middlewares')
 
 const app = express()
 
@@ -36,13 +37,12 @@ app.use(cookieSession({
 }))
 
 app.get('/', function (req, res) {
-  console.log(req.session.user)
   res.render('index', { currentTime: new Date() })
 })
-app.use('/data', require('./routes/data'))
-app.use('/user', require('./routes/user'))
-app.use('/question', require('./routes/question'))
-app.use('/answer', require('./routes/answer'))
+app.use('/data', middleware, require('./routes/data'))
+app.use('/user', middleware, require('./routes/user'))
+app.use('/question', middleware, require('./routes/question'))
+app.use('/answer', middleware, require('./routes/answer'))
 
 // 可以将一类的路由单独保存在一个文件中
 
