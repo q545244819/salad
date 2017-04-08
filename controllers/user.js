@@ -3,6 +3,13 @@ const AV = require('leanengine')
 exports.signIn = function* (req, res) {
   const body = req.body
   const user = yield AV.User.logIn(body.username, body.password)
+  const query = new AV.Query(AV.Role)
+
+  query.equalTo('users', user)
+
+  const role = yield query.first()
+
+  user.set('role', role.get('name'))
 
   req.session.user = user
 

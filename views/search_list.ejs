@@ -8,7 +8,9 @@
     <div class="media-body">
       <h4 class="media-heading">
         <a href="###"><%= data.docs[i].get('title') %></a>
-        <a href="###" class="label label-primary get-info">查看资料</a>   
+        <% if (user && user.role === 'investor') { %>
+          <a href="###" class="label label-primary get-info">查看资料</a>
+        <% } %>
         <span class="label label-default vote">赞</span>
       </h4>
       <p>
