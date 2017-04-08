@@ -36,7 +36,7 @@ exports.saveData = function* (req, res) {
           .catch(err => {
             console.error(err)
 
-            res.send(500)
+            res.redirect('/bgo/data')
           })
       })
     } else {
