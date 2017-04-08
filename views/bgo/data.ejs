@@ -23,18 +23,18 @@
       </div>
     </nav>
 
-    <form class="data-box">
+    <form class="data-box" enctype="multipart/form-data" method="post" action="/bgo/data">
       <div class="form-group">
         <label for="title">标题</label>
-        <input type="text" class="form-control" id="title" placeholder="请输入标题" required>
+        <input type="text" name="title" class="form-control" id="title" placeholder="请输入标题" required>
         <label for="tags">分类</label>
-        <input type="text" class="form-control" id="tags" placeholder="请输入分类，用分号隔开" required>
-        <label for="tags">封面图</label>
-        <input type="file" id="tags" required>
+        <input type="text" name="tags" class="form-control" id="tags" placeholder="请输入分类，用分号隔开" required>
+        <label for="file">封面图</label>
+        <input type="file" name="upload" id="file" multiple="multiple" required>
         <label for="content">正文内容</label>
         <textarea name="content" class="form-control" id="content" cols="30" rows="10"></textarea>
       </div>
-      <button type="submit" class="btn btn-primary">提交</button>
+      <button type="submit" class="btn btn-primary" id="js-submit">提交</button>
     </form>
   </div>
 </body>
