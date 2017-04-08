@@ -41,12 +41,21 @@ exports.search = function* (req, res) {
 
 exports.list = function* (req, res) {
   const query = req.query
-  const data = yield moduleData.search('*', parseInt(query.page) || 1)
+  const data = yield moduleData.search(query.q || '*', parseInt(query.page) || 1)
+  const hightlight = {}
+
+  if (query.q) {
+    query.q.split(' ').forEach((item, index) => {
+      hightlight[item] = 1
+    })
+  }
 
   res.render('list', {
     user: req.session.user,
     name: 'list',
-    data
+    data,
+    query,
+    hightlight
   })
 }
 

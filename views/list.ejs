@@ -16,7 +16,52 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8">
-        <%- include search_list.ejs %>
+        <div class="search-list-tags">
+          产品：
+          <a href="/list" class="label <%= query.q ? 'label-default' : 'label-primary' %> ">全部</a>
+          <a href="/list?q=<%= query.q ? query.q + '+软件' : '软件' %>" class="label <%= hightlight['软件'] ? 'label-primary' : 'label-default' %>">软件</a>
+          <a href="/list?q=<%= query.q ? query.q + '+硬件' : '硬件' %>" class="label <%= hightlight['硬件'] ? 'label-primary' : 'label-default' %>">硬件</a>
+          <a href="/list?q=<%= query.q ? query.q + '+食品' : '食品' %>" class="label <%= hightlight['食品'] ? 'label-primary' : 'label-default' %>">食品</a>
+          <a href="/list?q=<%= query.q ? query.q + '+移动应用' : '移动应用' %>" class="label <%= hightlight['移动应用'] ? 'label-primary' : 'label-default' %>">移动应用</a>
+          <a href="/list?q=<%= query.q ? query.q + '+智能家居' : '智能家居' %>" class="label <%= hightlight['智能家居'] ? 'label-primary' : 'label-default' %>">智能家居</a>
+          <a href="/list?q=<%= query.q ? query.q + '+机器人' : '机器人' %>" class="label <%= hightlight['机器人'] ? 'label-primary' : 'label-default' %>">机器人</a>
+          <a href="/list?q=<%= query.q ? query.q + '+VR 眼镜' : 'VR 眼镜' %>" class="label <%= hightlight['VR 眼镜'] ? 'label-primary' : 'label-default' %>">VR 眼镜</a>
+        </div>
+        <div class="search-list-tags">
+          痛点：
+          <a href="/list?q=<%= query.q ? query.q + '+懒人' : '懒人' %>" class="label <%= hightlight['懒人'] ? 'label-primary' : 'label-default' %>">懒人</a>
+          <a href="/list?q=<%= query.q ? query.q + '+理财' : '理财' %>" class="label <%= hightlight['理财'] ? 'label-primary' : 'label-default' %>">理财</a>
+          <a href="/list?q=<%= query.q ? query.q + '+绿色食品' : '绿色食品' %>" class="label <%= hightlight['绿色食品'] ? 'label-primary' : 'label-default' %>">绿色食品</a>
+          <a href="/list?q=<%= query.q ? query.q + '+两性' : '两性' %>" class="label <%= hightlight['两性'] ? 'label-primary' : 'label-default' %>">两性</a>
+          <a href="/list?q=<%= query.q ? query.q + '+交友' : '交友' %>" class="label <%= hightlight['交友'] ? 'label-primary' : 'label-default' %>">交友</a>
+          <a href="/list?q=<%= query.q ? query.q + '+黑科技' : '黑科技' %>" class="label <%= hightlight['黑科技'] ? 'label-primary' : 'label-default' %>">黑科技</a>
+          <a href="/list?q=<%= query.q ? query.q + '+作业' : '作业' %>" class="label <%= hightlight['作业'] ? 'label-primary' : 'label-default' %>">作业</a>
+        </div>
+        <hr>
+        <% if (data.docs.length) { %>
+          <%- include search_list.ejs %>          
+        <% } else { %>
+          <div class="alert alert-info">暂无数据！</div>
+          <% if (user) { %>
+            <div class="panel panel-default">
+              <div class="panel-heading">没有你想要的数据？那么请发出的你的痛点和需求吧！</div>
+              <div class="panel-body">
+                <form data-toggle="validator" method="post" action="/question">
+                  <div class="form-group">
+                    <label for="title">标题（必填）</label>
+                    <input type="text" name="title" class="form-control" id="title" data-minlength="5" maxlength="30" placeholder="字数30以内" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="content">详细描述</label>
+                    <textarea name="content" id="" cols="30" rows="4" class="form-control" maxlength="150" placeholder="字数150以内"></textarea>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary">提 交</button>
+                </form>
+              </div>
+            </div>
+          <% } %>
+        <% } %>
       </div>
       <div class="col-md-4">
         <p>推荐信息</p>
@@ -27,5 +72,6 @@
 
   <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
   <script src="/scripts/bootstrap.min.js"></script>
+  <script src="/scripts/validator.min.js"></script>
 </body>
 </html>
