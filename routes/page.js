@@ -9,5 +9,6 @@ router
   .get('/login', wrap(pageCtrl.login))
   .get('/register', wrap(pageCtrl.register))
   .get('/search', wrap(pageCtrl.search))
+  .get('/list', wrap(pageCtrl.list))
 
 module.exports = router

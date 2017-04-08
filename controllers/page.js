@@ -13,3 +13,7 @@ exports.register = function* (req, res) {
 exports.search = function* (req, res) {
   res.render('search')
 }
+
+exports.list = function* (req, res) {
+  res.render('list')
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>有无-列表</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/page/comment.css">
+  <link rel="stylesheet" href="/css/page/search.css">
+</head>
+<body>
+  <%- include header.ejs %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <%- include search_list.ejs %>
+      </div>
+      <div class="col-md-4">
+        <p>相关信息</p>
+        <%- include search_list_right.ejs %>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+  <script src="/scripts/bootstrap.min.js"></script>
+</body>
+</html>
