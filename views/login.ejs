@@ -14,9 +14,9 @@
     <div class="login-box">
       <a href="/"><img src="/image/logo.png" alt="" class="logo"></a>
       <form class="login-form" method="post" action="">
-        <div class="form-group">
-          <input type="text" name="username" class="form-control" placeholder="用户名">
-          <input type="password" name="password" class="form-control" placeholder="密码">
+        <div class="form-group" data-toggle="validator">
+          <input type="text" name="username" class="form-control" placeholder="用户名" required>
+          <input type="password" name="password" class="form-control" placeholder="密码" required>
         </div>
       </form>
       <button type="button" class="btn btn-primary btn-lg btn-block">登 录</button>
@@ -28,5 +28,6 @@
 
   <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
   <script src="/scripts/bootstrap.min.js"></script>
+  <script src="/scripts/validator.min.js"></script>
 </body>
 </html>
