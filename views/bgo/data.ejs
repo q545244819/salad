@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>后台操作系统</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/bgo/index.css">
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">有无</a>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/bgo/data">添加数据</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a>用户：admin</a></li>
+          <li><a href="/bgo/logout">登出</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <form class="data-box">
+      <div class="form-group">
+        <label for="title">标题</label>
+        <input type="text" class="form-control" id="title" placeholder="请输入标题" required>
+        <label for="tags">分类</label>
+        <input type="text" class="form-control" id="tags" placeholder="请输入分类，用分号隔开" required>
+        <label for="tags">封面图</label>
+        <input type="file" id="tags" required>
+        <label for="content">正文内容</label>
+        <textarea name="content" class="form-control" id="content" cols="30" rows="10"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">提交</button>
+    </form>
+  </div>
+</body>
+</html>

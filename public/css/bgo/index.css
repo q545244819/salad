@@ -1,0 +1,22 @@
+.sign-in {
+  display: block;
+  width: 400px;
+  margin: 0 auto;
+}
+
+.sign-in > .form-signin-heading {
+  margin-bottom: 10px;
+}
+
+.sign-in > button {
+  margin-top: 10px;
+}
+
+.data-box label {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.data-box input {
+  margin-bottom: 10px;
+}

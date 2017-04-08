@@ -39,6 +39,7 @@ app.use(cookieSession({
 app.get('/', function (req, res) {
   res.render('index', { currentTime: new Date() })
 })
+app.use('/bgo', require('./routes/bgo'))
 app.use('/data', middleware, require('./routes/data'))
 app.use('/user', middleware, require('./routes/user'))
 app.use('/question', middleware, require('./routes/question'))
