@@ -4,7 +4,7 @@ const Data = AV.Object.extend('Data')
 
 exports.find = function* (req, res) {
   const query = req.query
-  const results = yield moduleData.search(query.q)
+  const results = yield moduleData.search(query.q, parseInt(query.page))
 
   res.send(results)
 }
