@@ -11,3 +11,14 @@
   width: 64px;
   height: 64px;
 }
+
+.search-list .media-heading span,
+.get-info {
+  cursor: pointer;
+  float: right;
+  margin-left: 5px;
+}
+
+.voted {
+  background-color: #d9534f;
+}
