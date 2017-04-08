@@ -1,5 +1,6 @@
 const moduleData = require('../modules/data')
 const moduleQuestion = require('../modules/question')
+const moduleAnswer = require('../modules/answer')
 
 exports.index = function* (req, res) {
   res.render('index', {
@@ -68,8 +69,14 @@ exports.question = function* (req, res) {
 }
 
 exports.questionDetail = function* (req, res) {
+  const params = req.params
+  const question = yield moduleQuestion.findById(params.id)
+  const answers = yield moduleAnswer.findByQuestion(params.id)
+
   res.render('question_detail', {
     user: req.session.user,
-    name: 'questionDetail'
+    name: 'questionDetail',
+    question,
+    answers
   })
 }

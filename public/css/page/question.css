@@ -46,6 +46,10 @@
   border-bottom: 1px solid #ccc;
 }
 
+.answer-date {
+  color: #ccc;
+}
+
 .answer-operation {
   margin-top: 10px;
 }

@@ -14,44 +14,36 @@
 
   <div class="container">
     <div class="question-box">
-      <h3>我国对电商征税吗？电商税务征管目前存在哪些问题和不足？</h3>
-      <p class="question-owner">提问者：程天蓝，日期：2015-01-10</p>
-      <p>
-        唉。我国不对电商征税吗？ 当然要征！现在生活中，为什么这部分的征管不能到位呢？ 多种原因。 1. 电商征税从技术上有难度吗？没有，数据采集容易，征税成本低。2. 税务机关该收吗？ 该收。3. 现实中有征税的案例吗？当然有！比如武汉国税曾经是对电商。
-      </p>
+      <h3><%= question.get('title') %></h3>
+      <p class="question-owner">提问者：<%= question.get('user').get('username') %>，日期：<%= `${question.get('createdAt').getFullYear()}-${question.get('createdAt').getMonth() + 1}-${question.get('createdAt').getDate()} ${question.get('createdAt').getHours()}:${question.get('createdAt').getMinutes()}` %></p>
+      <p><%= question.get('content') %></p>
     </div>
 
     <div class="rows answer-wrap">
-      <div class="col-md-8">        
-        <div class="answer-box">
-          <h4>回答者：程天蓝</h4>
-          <div class="content">
-            谢邀。我觉得我看了个假会……
-            3月31日这个会，是税总和工商联共同开的，议题是《深化税收改革，助力民营企业发展》，参会企业有阿里巴巴集团，红豆集团，吉利集团，京东集团等9家企业……
-            谢邀。我觉得我看了个假会……
-            3月31日这个会，是税总和工商联共同开的，议题是《深化税收改革，助力民营企业发展》，参会企业有阿里巴巴集团，红豆集团，吉利集团，京东集团等9家企业……
-            谢邀。我觉得我看了个假会……
-            3月31日这个会，是税总和工商联共同开的，议题是《深化税收改革，助力民营企业发展》，参会企业有阿里巴巴集团，红豆集团，吉利集团，京东集团等9家企业……
-            谢邀。我觉得我看了个假会……
-            3月31日这个会，是税总和工商联共同开的，议题是《深化税收改革，助力民营企业发展》，参会企业有阿里巴巴集团，红豆集团，吉利集团，京东集团等9家企业……
-            谢邀。我觉得我看了个假会……
-            3月31日这个会，是税总和工商联共同开的，议题是《深化税收改革，助力民营企业发展》，参会企业有阿里巴巴集团，红豆集团，吉利集团，京东集团等9家企业……
-            谢邀。我觉得我看了个假会……
-            3月31日这个会，是税总和工商联共同开的，议题是《深化税收改革，助力民营企业发展》，参会企业有阿里巴巴集团，红豆集团，吉利集团，京东集团等9家企业……
-          </div>
-          <div class="answer-operation">
-            <button class="btn btn-defualt" type="button">
-              <i class="glyphicon glyphicon-baby-formula"></i> <span class="badge">4</span>
-            </button>
-            <button class="btn btn-defualt" type="button">
-              <i class="glyphicon glyphicon-share"></i> 分享
-            </button>
-            <button class="btn btn-default" type="button">举报</button>
-          </div>
-        </div>
+      <div class="col-md-8">
+        <% if (answers.length) { %>
+          <% for (var i = 0; i < answers.length; i += 1) { %>
+            <div class="answer-box">
+              <h4><%= answers[i].get('user').get('username') %></h4>
+              <p class="answer-date">回复时间：<%= `${answers[i].get('createdAt').getFullYear()}-${answers[i].get('createdAt').getMonth() + 1}-${answers[i].get('createdAt').getDate()} ${answers[i].get('createdAt').getHours()}:${answers[i].get('createdAt').getMinutes()}` %></p>            
+              <div class="content"><%= answers[i].get('content') %></div>
+              <div class="answer-operation">
+                <button class="btn btn-defualt" type="button">
+                  <i class="glyphicon glyphicon-baby-formula"></i> <span class="badge"><%= answers[i].get('vote') %></span>
+                </button>
+                <button class="btn btn-defualt" type="button">
+                  <i class="glyphicon glyphicon-share"></i> 分享
+                </button>
+                <button class="btn btn-default" type="button">举报</button>
+              </div>
+            </div>
+          <% } %>
+        <% } else { %>
+          <div class="alert alert-info" role="alert">暂无人提出解决方案，如果你有好的解决方案请填写在下方的留言框中！</div>        
+        <% } %>
 
         <div class="question-reply-in-detail">
-          <textarea name="" id="" cols="10" rows="3" class="form-control" placeholder="请输入您的回复"></textarea>
+          <textarea name="" id="" cols="10" rows="3" class="form-control" placeholder="请输入您的解决方案"></textarea>
           <button type="button" class="btn btn-primary">提交</button>
         </div>
       </div>

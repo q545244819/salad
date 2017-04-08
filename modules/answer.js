@@ -24,3 +24,14 @@ exports.search = (q, page = 1) => {
       .catch(err => reject(err))
   })
 }
+
+exports.findByQuestion = (question) => {
+  const query = new AV.Query('Answer')
+
+  query.equalTo('question', AV.Object.createWithoutData('Question', question))
+  query.descending('vote')
+  query.descending('updatedAt')
+  query.include('user')
+  
+  return query.find()
+}

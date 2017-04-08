@@ -48,3 +48,12 @@ exports.find = (page = 1, solve) => {
       .catch(err => reject(err))
   })
 }
+
+exports.findById = id => {
+  const query = new AV.Query('Question')
+
+  query.equalTo('objectId', id)
+  query.include('user')
+
+  return query.first()
+}
