@@ -1,4 +1,5 @@
 const moduleData = require('../modules/data')
+const moduleQuestion = require('../modules/question')
 
 exports.index = function* (req, res) {
   res.render('index', {
@@ -41,8 +42,6 @@ exports.list = function* (req, res) {
   const query = req.query
   const data = yield moduleData.search('*', parseInt(query.page) || 1)
 
-  console.log(data.docs[0].get('image').get('url'))
-
   res.render('list', {
     user: req.session.user,
     name: 'list',
@@ -51,9 +50,20 @@ exports.list = function* (req, res) {
 }
 
 exports.question = function* (req, res) {
+  const query = req.query
+  let data = null
+
+  if (query.q) {
+    data = yield moduleQuestion.search(query.q, parseInt(query.page) || 1)
+  } else {
+    data = yield moduleQuestion.find(parseInt(query.page) || 1)    
+  }
+
   res.render('question', {
     user: req.session.user,
-    name: 'question'
+    name: 'question',
+    data,
+    query
   })
 }
 

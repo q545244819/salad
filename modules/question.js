@@ -10,6 +10,7 @@ exports.search = (q, page = 1) => {
   query.limit(count)
   query.skip(count * (page - 1))
   query.sortBy(new AV.SearchSortBuilder().descending('updatedAt'))
+  query.include('user')
 
   return new Promise((resolve, reject) => {
     query.find()
@@ -18,6 +19,29 @@ exports.search = (q, page = 1) => {
           docs: results,
           hasPrevious: (page === 1 && page > 0) ? false : true,
           hasMore: results.length < count ? false : query.hasMore(),
+          currentPage: page
+        })
+      })
+      .catch(err => reject(err))
+  })
+}
+
+exports.find = (page = 1, solve) => {
+  const query = new AV.Query('Question')
+
+  query.limit(count)
+  query.skip(count * (page - 1))
+  query.descending('updatedAt')
+  query.include('solve')
+  solve ? query.exists('solve') : query.doesNotExist('solve')
+
+  return new Promise((resolve, reject) => {
+    query.find()
+      .then(results => {
+        resolve({
+          docs: results,
+          hasPrevious: (page === 1 && page > 0) ? false : true,
+          hasMore: results.length < count ? false : true,
           currentPage: page
         })
       })
