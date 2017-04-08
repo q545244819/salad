@@ -32,7 +32,7 @@ exports.find = (page = 1, solve) => {
   query.limit(count)
   query.skip(count * (page - 1))
   query.descending('updatedAt')
-  query.include('solve')
+  query.include('solve', 'user')
   solve ? query.exists('solve') : query.doesNotExist('solve')
 
   return new Promise((resolve, reject) => {

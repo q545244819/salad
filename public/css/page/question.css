@@ -33,6 +33,10 @@
   margin-bottom: 20px;
 }
 
+.question-operation > button {
+  margin-left: 5px;
+}
+
 .answer-wrap {
   margin-top: 15px;
 }

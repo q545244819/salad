@@ -39,10 +39,10 @@
             <p>
               <%= data.docs[i].get('content').length > 100 ? data.docs[i].get('content').slice(0, 100) + '...' : data.docs[i].get('content') %>
             </p>
-            <div class="question-operation">
-              <button type="button" class="btn btn-primary btn-xs">回复</button>
-              <button type="button" class="btn btn-defualt btn-xs">有相同痛点</button>
+            <div class="question-operation clearfix">
               <button type="button" class="btn btn-default btn-xs pull-right">举报</button>
+              <button type="button" class="btn btn-defualt btn-xs pull-right">有相同痛点</button>
+              <button type="button" class="btn btn-primary btn-xs pull-right">回复</button>                          
             </div>
           </div>
         <% } %>
