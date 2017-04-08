@@ -14,7 +14,7 @@
         <span class="label label-default vote">赞</span>
       </h4>
       <p>
-        <%= data.docs[i].get('content').slice(0, 100) + '...' %>
+        <%= data.docs[i].get('content').length > 100 ? data.docs[i].get('content').slice(0, 100) + '...' : data.docs[i].get('content') %>
       </p>
     </div>
   </div>
