@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>有无</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/page/comment.css">
+  <link rel="stylesheet" href="/css/page/question.css">
+</head>
+<body>
+  <%- include header.ejs %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="input-group search-box">
+          <input type="text" class="form-control" placeholder="大家都在搜人工智能">
+          <span class="input-group-btn">
+            <button class="btn btn-primary" type="button">搜索</button>
+          </span>
+        </div>
+
+        <% for (var i = 0; i < 10; i += 1) {%>
+          <div class="question-box">
+            <h4><a href="###">我国对电商征税吗？电商税务征管目前存在哪些问题和不足？</a></h4>
+            <p class="question-owner">提问者：程天蓝，日期：2015-01-10</p>
+            <p>
+              唉。我国不对电商征税吗？ 当然要征！现在生活中，为什么这部分的征管不能到位呢？ 多种原因。 1. 电商征税从技术上有难度吗？没有，数据采集容易，征税成本低。2. 税务机关该收吗？ 该收。3. 现实中有征税的案例吗？当然有！比如武汉国税曾经是对电商征过…
+            </p>
+            <div class="question-operation">
+              <button type="button" class="btn btn-primary btn-xs">回复</button>
+              <button type="button" class="btn btn-primary btn-xs">有相同痛点</button>
+              <button type="button" class="btn btn-default btn-xs pull-right">举报</button>
+            </div>
+          </div>
+        <% } %>
+
+        <nav>
+          <ul class="pager">
+            <li><a href="#">上一页</a></li>
+            <li>1</li>
+            <li><a href="#">下一页</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="col-md-4">
+        <p>推荐信息</p>
+        <% for (var i = 0; i < 4; i += 1) {%>
+          <div class="question-box">
+            <h4><a href="###">我国对电商征税吗？电商税务征管目前存在哪些问题和不足？</a></h4>
+            <p class="question-owner">提问者：程天蓝，日期：2015-01-10</p>
+            <p>
+              唉。我国不对电商征税吗？ 当然要征！现在生活中，为什么这部分的征管不能到位呢？ 多种原因。 1.…
+            </p>
+          </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-reply">
+    <textarea name="" id="" cols="10" rows="5" class="form-control" placeholder="请输入您的回复"></textarea>
+    <button type="button" class="btn btn-primary">提交</button>
+    <button type="button" class="btn btn-danger">关闭</button>
+  </div>
+
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+  <script src="/scripts/bootstrap.min.js"></script>
+</body>
+</html>

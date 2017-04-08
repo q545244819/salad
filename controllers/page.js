@@ -17,3 +17,11 @@ exports.search = function* (req, res) {
 exports.list = function* (req, res) {
   res.render('list')
 }
+
+exports.question = function* (req, res) {
+  res.render('question')
+}
+
+exports.questionDetail = function* (req, res) {
+  res.render('question_detail')
+}
