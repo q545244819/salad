@@ -22,3 +22,7 @@
 .voted {
   background-color: #d9534f;
 }
+
+.search-tags {
+  height: 22px;
+}

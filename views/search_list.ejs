@@ -16,6 +16,12 @@
       <p>
         <%= data.docs[i].get('content').length > 100 ? data.docs[i].get('content').slice(0, 100) + '...' : data.docs[i].get('content') %>
       </p>
+      <div class="search-tags">
+        分类：
+        <% data.docs[i].get('tags').forEach(item => { %>
+          <span class="label label-info"><%= item %></span>
+        <% }) %>
+      </div>
     </div>
   </div>
 <% } %>
