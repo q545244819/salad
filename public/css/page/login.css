@@ -1,0 +1,28 @@
+.login-box {
+  width: 400px;
+  margin: 15px auto;
+  color: #fff;
+}
+
+.login-form {
+  margin-top: 15px;
+}
+
+.login-form input {
+  font-size: 18px;
+  padding: 22px 15px;
+}
+
+.login-form input:nth-child(1) {
+  border-radius: 6px 6px 0 0;
+  border-bottom: none;
+}
+
+.login-form input:nth-child(2) {
+  border-radius: 0 0 6px 6px;
+}
+
+.login-other {
+  margin-top: 15px;
+  text-align: right;
+}
