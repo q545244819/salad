@@ -35,7 +35,7 @@ exports.register = function* (req, res) {
 
     req.session.user = user
 
-    res.redirect('/')    
+    res.redirect('/')
   } catch(e) {
     console.error(e)
 

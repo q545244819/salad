@@ -8,6 +8,7 @@ router
   .get('/', wrap(pageCtrl.index))
   .get('/login', wrap(pageCtrl.login))
   .get('/register', wrap(pageCtrl.register))
+  .get('/logout', wrap(pageCtrl.logout))
   .get('/search', wrap(pageCtrl.search))
   .get('/list', wrap(pageCtrl.list))
   .get('/question', wrap(pageCtrl.question))
