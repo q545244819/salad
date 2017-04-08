@@ -38,9 +38,15 @@ exports.search = function* (req, res) {
 }
 
 exports.list = function* (req, res) {
+  const query = req.query
+  const data = yield moduleData.search('*', parseInt(query.page) || 1)
+
+  console.log(data.docs[0].get('image').get('url'))
+
   res.render('list', {
     user: req.session.user,
-    name: 'list'
+    name: 'list',
+    data
   })
 }
 

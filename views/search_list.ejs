@@ -2,7 +2,7 @@
   <div class="media search-list">
     <div class="media-left">
       <a href="#">
-        <img class="media-object" src="<%= data.docs[i].get('image') ? data.docs[i].get('image').url : '/image/none.jpg' %>" alt="<%= data.docs[i].get('title') %>">
+        <img class="media-object" src="<%= data.docs[i].get('image') ? data.docs[i].get('image').get ? data.docs[i].get('image').get('url') : '/image/none.jpg' : '/image/none.jpg' %>" alt="<%= data.docs[i].get('title') %>">
       </a>
     </div>
     <div class="media-body">
