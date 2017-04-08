@@ -1,10 +1,67 @@
-<!DOCTYPE HTML>
-<html>
-  <head>
-    <title>LeanEngine</title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
-  </head>
-  <body>
-    <p><a href="/bgo/data">点击我进入数据录入页面</a></p>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>有无</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/page/comment.css">
+  <link rel="stylesheet" href="/css/page/index.css">
+</head>
+<body>
+  <%- include header.ejs %>
+
+  <div class="container">
+    <div class="input-group search-box">
+      <input type="text" class="form-control" placeholder="大家都在搜人工智能">
+      <span class="input-group-btn">
+        <button class="btn btn-primary btn-lg" type="button">搜索</button>
+      </span>
+    </div>
+    <div class="hot-box">
+      热门搜索：
+      <a href="#" class="label label-danger">人工智能</a>
+      <a href="#" class="label label-danger">机器学习</a>
+      <a href="#" class="label label-danger">神经网络算法</a>
+      <a href="#" class="label label-danger">大数据</a>
+      <a href="#" class="label label-danger">穿衣搭配</a>
+    </div>
+    <div class="row production-box">
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <img src="http://placehold.it/300x200" alt="...">
+          <div class="caption">
+            <h3>Thumbnail label</h3>
+            <p>...</p>
+            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <img src="http://placehold.it/300x200" alt="...">
+          <div class="caption">
+            <h3>Thumbnail label</h3>
+            <p>...</p>
+            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <img src="http://placehold.it/300x200" alt="...">
+          <div class="caption">
+            <h3>Thumbnail label</h3>
+            <p>...</p>
+            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+  <script src="/scripts/bootstrap.min.js"></script>
+</body>
 </html>

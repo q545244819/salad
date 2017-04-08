@@ -36,9 +36,7 @@ app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000
 }))
 
-app.get('/', function (req, res) {
-  res.render('index', { currentTime: new Date() })
-})
+app.use('/', require('./routes/page'))
 app.use('/bgo', require('./routes/bgo'))
 app.use('/data', middleware, require('./routes/data'))
 app.use('/user', middleware, require('./routes/user'))
