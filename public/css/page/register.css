@@ -1,0 +1,19 @@
+.register-box {
+  width: 400px;
+  margin: 30px auto;
+}
+
+.logo {
+  width: 400px;
+  height: auto;
+}
+
+.register-form {
+  margin-top: 30px;
+}
+
+.register-form input {
+  font-size: 18px;
+  padding: 22px 15px;
+  margin-top: 10px;
+}

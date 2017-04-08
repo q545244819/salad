@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/page/comment.css">
+  <link rel="stylesheet" href="/css/page/register.css">
+  <title>有无-注册</title>
+</head>
+<body>
+  <div class="container">
+    <div class="register-box">
+      <a href="/"><img src="/image/logo.png" alt="" class="logo"></a>
+      <div class="register-form">
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+          <a href="#home" class="btn btn-primary" aria-controls="home" role="tab" data-toggle="tab">个人</a>
+          <a href="#profile" class="btn btn-primary" aria-controls="profile" role="tab" data-toggle="tab">企业</a>
+          <a href="#messages" class="btn btn-primary" aria-controls="messages" role="tab" data-toggle="tab">投资人</a>
+        </div>
+        
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane fade in active" id="home">
+            <form action="" data-toggle="validator" method="post">
+              <div class="form-group">
+                <input type="text" name="username" class="form-control" placeholder="用户名（必填）" required>
+                <input type="password" name="password" class="form-control" placeholder="密码（必填）" required>
+                <input type="number" name="phone" class="form-control" placeholder="手机号码（必填）" required>
+                <input type="email" name="email" class="form-control" placeholder="邮箱地址">
+              </div>
+              <button type="button" class="btn btn-primary btn-lg btn-block">注 册</button>
+            </form>
+          </div>
+          <div role="tabpanel" class="tab-pane fade" id="profile">
+            <div class="form-group" method="post">
+              <input type="text" name="username" class="form-control" placeholder="用户名（必填）" required>
+              <input type="password" name="password" class="form-control" placeholder="密码（必填）" required>
+              <input type="number" name="phone" class="form-control" placeholder="手机号码（必填）" required>
+              <input type="email" name="email" class="form-control" placeholder="邮箱地址">
+            </div>
+            <button type="button" class="btn btn-primary btn-lg btn-block">注 册</button>
+          </div>
+          <div role="tabpanel" class="tab-pane fade" id="messages">
+            <div class="form-group" method="post">
+              <input type="text" name="username" class="form-control" placeholder="用户名（必填）" required>
+              <input type="password" name="password" class="form-control" placeholder="密码（必填）" required>
+              <input type="number" name="phone" class="form-control" placeholder="手机号码（必填）" required>
+              <input type="email" name="email" class="form-control" placeholder="邮箱地址">
+            </div>
+            <button type="button" class="btn btn-primary btn-lg btn-block">注 册</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+  <script src="/scripts/bootstrap.min.js"></script>
+  <script src="/scripts/validator.min.js"></script>
+</body>
+</html>

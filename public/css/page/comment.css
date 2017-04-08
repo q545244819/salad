@@ -6,5 +6,10 @@
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
   color: #fff;
-  background-color: #5bc0de;
+  background-color: #337ab7;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
 }
