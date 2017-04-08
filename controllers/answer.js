@@ -1,5 +1,13 @@
 const AV = require('leanengine')
+const moduleAnswer = require('../modules/answer')
 const Answer = AV.Object.extend('Answer')
+
+exports.find = function* (req, res) {
+  const query = req.query
+  const results = yield moduleAnswer.search(query.q, parseInt(query.page))
+
+  res.send(results)
+}
 
 exports.create = function* (req, res) {
   const body = req.body

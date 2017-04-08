@@ -5,6 +5,7 @@ const router = express.Router()
 const answerCtrl = require('../controllers/answer')
 
 router
+  .get('/', wrap(answerCtrl.find))
   .post('/', wrap(answerCtrl.create))
   .put('/:id', wrap(answerCtrl.update))
   .delete('/:id', wrap(answerCtrl.delete))
