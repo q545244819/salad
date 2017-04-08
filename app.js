@@ -21,21 +21,28 @@ app.use(timeout('15s'))
 // 加载云引擎中间件
 app.use(AV.express())
 
-app.enable('trust proxy')
+app.enable('trust proxy', 1)
 // 需要重定向到 HTTPS 可去除下一行的注释。
 // app.use(AV.Cloud.HttpsRedirect())
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
-app.use(cookieParser())
+app.use(AV.Cloud.CookieSession({ secret: process.env.secret, maxAge: 3600000, fetchUser: true }))
+app.use(cookieParser({
+  name: 'session',
+  keys: [process.env.secret],
+  maxAge: 24 * 60 * 60 * 1000
+}))
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
   res.render('index', { currentTime: new Date() })
 })
+app.use('/data', require('./routes/data'))
+app.use('/user', require('./routes/user'))
 
 // 可以将一类的路由单独保存在一个文件中
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   // 如果任何一个路由都没有返回响应，则抛出一个 404 异常给后续的异常处理器
   if (!res.headersSent) {
     var err = new Error('Not Found')
@@ -45,7 +52,7 @@ app.use(function(req, res, next) {
 })
 
 // error handlers
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   if (req.timedout && req.headers.upgrade === 'websocket') {
     // 忽略 websocket 的超时
     return
