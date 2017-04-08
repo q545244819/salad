@@ -22,33 +22,40 @@
         
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane fade in active" id="home">
-            <form action="" data-toggle="validator" method="post">
+            <form action="/user/register" data-toggle="validator" method="post">
               <div class="form-group">
                 <input type="text" name="username" class="form-control" placeholder="用户名（必填）" required>
                 <input type="password" name="password" class="form-control" placeholder="密码（必填）" required>
                 <input type="number" name="phone" class="form-control" placeholder="手机号码（必填）" required>
                 <input type="email" name="email" class="form-control" placeholder="邮箱地址">
+                <input type="hidden" name="role" value="normal">
               </div>
-              <button type="button" class="btn btn-primary btn-lg btn-block">注 册</button>
+              <button type="submit" class="btn btn-primary btn-lg btn-block">注 册</button>
             </form>
           </div>
           <div role="tabpanel" class="tab-pane fade" id="profile">
-            <div class="form-group" method="post">
-              <input type="text" name="username" class="form-control" placeholder="用户名（必填）" required>
-              <input type="password" name="password" class="form-control" placeholder="密码（必填）" required>
-              <input type="number" name="phone" class="form-control" placeholder="手机号码（必填）" required>
-              <input type="email" name="email" class="form-control" placeholder="邮箱地址">
-            </div>
-            <button type="button" class="btn btn-primary btn-lg btn-block">注 册</button>
+            <form action="/user/register" method="post">
+              <div class="form-group">
+                <input type="text" name="username" class="form-control" placeholder="用户名（必填）" required>
+                <input type="password" name="password" class="form-control" placeholder="密码（必填）" required>
+                <input type="number" name="phone" class="form-control" placeholder="手机号码（必填）" required>
+                <input type="email" name="email" class="form-control" placeholder="邮箱地址">
+                <input type="hidden" name="role" value="business">
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg btn-block">注 册</button>
+            </form>
           </div>
           <div role="tabpanel" class="tab-pane fade" id="messages">
-            <div class="form-group" method="post">
-              <input type="text" name="username" class="form-control" placeholder="用户名（必填）" required>
-              <input type="password" name="password" class="form-control" placeholder="密码（必填）" required>
-              <input type="number" name="phone" class="form-control" placeholder="手机号码（必填）" required>
-              <input type="email" name="email" class="form-control" placeholder="邮箱地址">
-            </div>
-            <button type="button" class="btn btn-primary btn-lg btn-block">注 册</button>
+            <form action="/user/register" method="post">
+              <div class="form-group" method="post">
+                <input type="text" name="username" class="form-control" placeholder="用户名（必填）" required>
+                <input type="password" name="password" class="form-control" placeholder="密码（必填）" required>
+                <input type="number" name="phone" class="form-control" placeholder="手机号码（必填）" required>
+                <input type="email" name="email" class="form-control" placeholder="邮箱地址">
+                <input type="hidden" name="role" value="investor">              
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg btn-block">注 册</button>              
+            </form>
           </div>
         </div>
       </div>

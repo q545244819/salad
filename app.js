@@ -39,7 +39,7 @@ app.use(cookieSession({
 app.use('/', require('./routes/page'))
 app.use('/bgo', require('./routes/bgo'))
 app.use('/data', middleware, require('./routes/data'))
-app.use('/user', middleware, require('./routes/user'))
+app.use('/user', require('./routes/user'))
 app.use('/question', middleware, require('./routes/question'))
 app.use('/answer', middleware, require('./routes/answer'))
 

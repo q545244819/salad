@@ -15,11 +15,30 @@ exports.register = function* (req, res) {
 
   user.setUsername(body.username)
   user.setPassword(body.password)
-  user.setEmail(body.email)
+  user.setMobilePhoneNumber(body.phone)
 
-  const register = yield user.signUp()
+  if (body.email) {
+    user.setEmail(body.email)
+  }
 
-  req.session.user = user
+  try {
+    const register = yield user.signUp()
+    const roleQuery = new AV.Query('_Role')
 
-  res.redirect('/')
+    roleQuery.equalTo('name', body.role)
+    
+    const role = yield roleQuery.first()
+
+    role.getUsers().add(register)
+    
+    yield role.save()
+
+    req.session.user = user
+
+    res.redirect('/')    
+  } catch(e) {
+    console.error(e)
+
+    res.redirect('/register')
+  }
 }
