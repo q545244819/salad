@@ -2,10 +2,11 @@ const AV = require('leanengine')
 
 exports.signIn = function* (req, res) {
   const body = req.body
+  const user = yield AV.User.logIn(body.username, body.password)
 
-  yield AV.User.logIn(body.username, body.password)
+  req.session.user = user
 
-  res.send('logIn!')
+  res.redirect('/')
 }
 
 exports.register = function* (req, res) {
@@ -18,5 +19,7 @@ exports.register = function* (req, res) {
 
   const register = yield user.signUp()
 
-  res.send(register)
+  req.session.user = user
+
+  res.redirect('/')
 }

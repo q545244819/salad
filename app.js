@@ -2,6 +2,7 @@ const express = require('express')
 const timeout = require('connect-timeout')
 const path = require('path')
 const cookieParser = require('cookie-parser')
+const cookieSession = require('cookie-session')
 const bodyParser = require('body-parser')
 const AV = require('leanengine')
 
@@ -27,18 +28,20 @@ app.enable('trust proxy', 1)
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
-app.use(AV.Cloud.CookieSession({ secret: process.env.secret, maxAge: 3600000, fetchUser: true }))
-app.use(cookieParser({
+app.use(cookieParser())
+app.use(cookieSession({
   name: 'session',
   keys: [process.env.secret],
   maxAge: 24 * 60 * 60 * 1000
 }))
 
 app.get('/', function (req, res) {
+  console.log(req.session.user)
   res.render('index', { currentTime: new Date() })
 })
 app.use('/data', require('./routes/data'))
 app.use('/user', require('./routes/user'))
+app.use('/question', require('./routes/question'))
 
 // 可以将一类的路由单独保存在一个文件中
 
