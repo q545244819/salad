@@ -17,7 +17,7 @@ exports.delete = function* (req, res) {
   const params = req.params
   const question = AV.Object.createWithoutData('Question', params.id)
 
-  yield question.remove()
+  yield question.destroy()
 
   res.send('deleted!')
 }
@@ -30,7 +30,7 @@ exports.update = function* (req, res) {
   question.set('title', body.title)
   question.set('content', body.content)
 
-  const newQuestion = question.save()
+  const newQuestion = yield question.save()
 
   res.send(newQuestion)
 }
