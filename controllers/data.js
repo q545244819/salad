@@ -30,7 +30,7 @@ exports.delete = function* (req, res) {
   const params = req.params
   const data = AV.Object.createWithoutData('Data', params.id)
   
-  yield data.remove()
+  yield data.destroy()
 
   res.send('deleted!')
 }

@@ -17,7 +17,7 @@ exports.delete = function* (req, res) {
   const params = req.params
   const answer = AV.Object.createWithoutData('Answer', params.id)
 
-  yield answer.remove()
+  yield answer.destroy()
 
   res.send('deleted!')
 }
