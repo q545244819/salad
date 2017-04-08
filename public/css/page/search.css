@@ -1,0 +1,13 @@
+.col-md-4 {
+  border-left: 1px solid #ccc;
+}
+
+.search-box {
+  width: 400px;
+  margin-bottom: 15px;
+}
+
+.search-list .media-object {
+  width: 64px;
+  height: 64px;
+}

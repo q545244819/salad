@@ -8,5 +8,6 @@ router
   .get('/', wrap(pageCtrl.index))
   .get('/login', wrap(pageCtrl.login))
   .get('/register', wrap(pageCtrl.register))
+  .get('/search', wrap(pageCtrl.search))
 
 module.exports = router
