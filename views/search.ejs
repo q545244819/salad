@@ -24,8 +24,31 @@
             </span>
           </div>
         </form>
-        
-        <%- include search_list.ejs %>
+
+        <% if (data.docs.length) { %>
+          <%- include search_list.ejs %>
+        <% } else { %>
+          <div class="alert alert-info">暂无数据！</div>
+          <% if (user) { %>
+            <div class="panel panel-default">
+              <div class="panel-heading">没有你想要的数据？那么请发出的你的痛点和需求吧！</div>
+              <div class="panel-body">
+                <form data-toggle="validator" method="post" action="/question">
+                  <div class="form-group">
+                    <label for="title">标题（必填）</label>
+                    <input type="text" name="title" class="form-control" id="title" data-minlength="5" maxlength="30" placeholder="字数30以内" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="content">详细描述</label>
+                    <textarea name="content" id="" cols="30" rows="4" class="form-control" maxlength="150" placeholder="字数150以内"></textarea>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary">提 交</button>
+                </form>
+              </div>
+            </div>
+          <% } %>
+        <% } %>
       </div>
       <div class="col-md-4">
         <p>相关信息</p>
@@ -36,5 +59,6 @@
 
   <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
   <script src="/scripts/bootstrap.min.js"></script>
+  <script src="/scripts/validator.min.js"></script>
 </body>
 </html>

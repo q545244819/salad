@@ -25,43 +25,66 @@
           </div>
         </form>
 
-        <% for (var i = 0; i < data.docs.length; i += 1) {%>
-          <div class="question-box">
-            <h4><a href="/question/<%= data.docs[i].get('id') %>"><%= data.docs[i].get('title') %></a></h4>
-            <p class="question-owner">
-              提问者：<%= data.docs[i].get('user').get('username') %>，日期：<%= `${data.docs[i].get('createdAt').getFullYear()}-${data.docs[i].get('createdAt').getMonth() + 1}-${data.docs[i].get('createdAt').getDate()} ${data.docs[i].get('createdAt').getHours()}:${data.docs[i].get('createdAt').getMinutes()}` %>
-              <% if (!data.docs[i].get('solve')) { %>
-                <span class="label label-warning">未解决</span>
+        <% if (data.docs.length) { %>
+          <% for (var i = 0; i < data.docs.length; i += 1) {%>
+            <div class="question-box">
+              <h4><a href="/question/<%= data.docs[i].get('id') %>"><%= data.docs[i].get('title') %></a></h4>
+              <p class="question-owner">
+                提问者：<%= data.docs[i].get('user').get('username') %>，日期：<%= `${data.docs[i].get('createdAt').getFullYear()}-${data.docs[i].get('createdAt').getMonth() + 1}-${data.docs[i].get('createdAt').getDate()} ${data.docs[i].get('createdAt').getHours()}:${data.docs[i].get('createdAt').getMinutes()}` %>
+                <% if (!data.docs[i].get('solve')) { %>
+                  <span class="label label-warning">未解决</span>
+                <% } else { %>
+                  <span class="label label-success">已解决</span>
+                <% } %>
+              </p>
+              <p>
+                <%= data.docs[i].get('content').length > 100 ? data.docs[i].get('content').slice(0, 100) + '...' : data.docs[i].get('content') %>
+              </p>
+              <div class="question-operation clearfix">
+                <button type="button" class="btn btn-default btn-xs pull-right">举报</button>
+                <button type="button" class="btn btn-defualt btn-xs pull-right">有相同痛点</button>
+                <button type="button" class="btn btn-primary btn-xs pull-right">回复</button>                          
+              </div>
+            </div>
+          <% } %>
+
+          <nav>
+            <ul class="pager">
+              <% if (data.hasPrevious) { %>
+                <li><a href="/search?q=<%= query.q %>&page=<%= parseInt(data.currentPage) - 1 %>">上一页</a></li>
               <% } else { %>
-                <span class="label label-success">已解决</span>
+                <li class="disabled"><a>上一页</a></li>
               <% } %>
-            </p>
-            <p>
-              <%= data.docs[i].get('content').length > 100 ? data.docs[i].get('content').slice(0, 100) + '...' : data.docs[i].get('content') %>
-            </p>
-            <div class="question-operation clearfix">
-              <button type="button" class="btn btn-default btn-xs pull-right">举报</button>
-              <button type="button" class="btn btn-defualt btn-xs pull-right">有相同痛点</button>
-              <button type="button" class="btn btn-primary btn-xs pull-right">回复</button>                          
+              <li><%= data.currentPage %></li>
+              <% if (data.hasMore) { %>
+                <li><a href="/search?q=<%= query.q %>&page=<%= parseInt(data.currentPage) + 1 %>">下一页</a></li>
+              <% } else { %>
+                <li class="disabled"><a>下一页</a></li>
+              <% } %>
+            </ul>
+          </nav>
+        <% } else { %>
+          <div class="alert alert-info">暂无数据！</div>
+        <% } %>
+        <% if (user) { %>
+          <div class="panel panel-default">
+            <div class="panel-heading">没有你想要的数据？那么请发出的你的痛点和需求吧！</div>
+            <div class="panel-body">
+              <form data-toggle="validator" method="post" action="/question">
+                <div class="form-group">
+                  <label for="title">标题（必填）</label>
+                  <input type="text" name="title" class="form-control" id="title" data-minlength="5" maxlength="30" placeholder="字数30以内" required>
+                </div>
+                <div class="form-group">
+                  <label for="content">详细描述</label>
+                  <textarea name="content" id="" cols="30" rows="4" class="form-control" maxlength="150" placeholder="字数150以内"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">提 交</button>
+              </form>
             </div>
           </div>
         <% } %>
-
-        <nav>
-          <ul class="pager">
-            <% if (data.hasPrevious) { %>
-              <li><a href="/search?q=<%= query.q %>&page=<%= parseInt(data.currentPage) - 1 %>">上一页</a></li>
-            <% } else { %>
-              <li class="disabled"><a>上一页</a></li>
-            <% } %>
-            <li><%= data.currentPage %></li>
-            <% if (data.hasMore) { %>
-              <li><a href="/search?q=<%= query.q %>&page=<%= parseInt(data.currentPage) + 1 %>">下一页</a></li>
-            <% } else { %>
-              <li class="disabled"><a>下一页</a></li>
-            <% } %>
-          </ul>
-        </nav>
       </div>
       <div class="col-md-4">
         <p>推荐信息</p>

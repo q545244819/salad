@@ -18,7 +18,7 @@ exports.create = function* (req, res) {
   })
   const newQuestion = yield question.save()
 
-  res.send(newQuestion)
+  res.redirect(`/question/${newQuestion.get('id')}`)
 }
 
 exports.delete = function* (req, res) {
