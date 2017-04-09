@@ -8,10 +8,12 @@
     <div class="media-body">
       <h4 class="media-heading">
         <a href="###"><%= data.docs[i].get('title') %></a>
-        <% if (user && user.role === 'investor') { %>
-          <a href="###" class="label label-primary get-info">查看资料</a>
+        <% if (user) { %>
+          <% if (user.role === 'investor') { %>
+            <a href="###" class="label label-primary get-info">查看资料</a>          
+          <% } %>
+          <span class="label label-default vote">赞</span>
         <% } %>
-        <span class="label label-default vote">赞</span>
       </h4>
       <p>
         <%= data.docs[i].get('content').length > 100 ? data.docs[i].get('content').slice(0, 100) + '...' : data.docs[i].get('content') %>
