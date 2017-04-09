@@ -30,3 +30,13 @@
 .search-tags {
   height: 22px;
 }
+
+.search-tags span {
+  cursor: pointer;
+}
+
+.search-tags .pull-right {
+  position: relative;
+  top: 3px;
+  margin-left: 5px;
+}

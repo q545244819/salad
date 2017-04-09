@@ -22,6 +22,9 @@
         <% data.docs[i].get('tags').forEach(item => { %>
           <span class="label label-info"><%= item %></span>
         <% }) %>
+        <% if (data.docs[i].get('ad')) { %>
+          <span class="label label-info pull-right">广告</span>          
+        <% } %>
         <span class="label label-default js-vote vote pull-right">赞（<%= data.docs[i].get('vote') %>）</span>
       </div>
     </div>
