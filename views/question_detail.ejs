@@ -29,7 +29,7 @@
               <p class="answer-date">回复时间：<%= `${answers[i].get('createdAt').getFullYear()}-${answers[i].get('createdAt').getMonth() + 1}-${answers[i].get('createdAt').getDate()} ${answers[i].get('createdAt').getHours()}:${answers[i].get('createdAt').getMinutes()}` %></p>            
               <div class="content"><%= answers[i].get('content') %></div>
               <div class="answer-operation">
-                <button class="btn btn-defualt" type="button">
+                <button class="btn btn-defualt disable" <% if (!user) { %> disabled="disabled" <% } %> type="button">
                   <i class="glyphicon glyphicon-baby-formula"></i> <span class="badge"><%= answers[i].get('vote') %></span>
                 </button>
                 <button class="btn btn-defualt" type="button">
@@ -43,10 +43,15 @@
           <div class="alert alert-info" role="alert">暂无人提出解决方案，如果你有好的解决方案请填写在下方的留言框中！</div>        
         <% } %>
 
+        <% if (user) { %>
         <div class="question-reply-in-detail">
-          <textarea name="" id="" cols="10" rows="3" class="form-control" placeholder="请输入您的解决方案"></textarea>
-          <button type="button" class="btn btn-primary">提交</button>
+          <form data-toggle="validator" action="/answer" method="post">
+            <textarea name="content" id="" cols="10" rows="3" class="form-control" placeholder="请输入您的解决方案" required></textarea>
+            <input type="hidden" name="questionId" value="<%= question.get('id') %>" required>
+            <button type="subnmit" class="btn btn-primary">提交</button>
+          </form>
         </div>
+        <% } %>
       </div>
       <div class="col-md-4">
         <p>推荐信息</p>
@@ -65,5 +70,6 @@
 
   <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
   <script src="/scripts/bootstrap.min.js"></script>
+  <script src="/scripts/validator.min.js"></script>
 </body>
 </html>

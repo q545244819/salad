@@ -18,8 +18,9 @@
 
 .question-reply {
   box-sizing: border-box;
+  transition: bottom .3s;
   position: fixed;
-  bottom: 0;
+  bottom: -200px;
   left: 0;
   z-index: 9;
   padding: 15px;
@@ -29,8 +30,12 @@
   background-color: #fff;
 }
 
+.question-reply.show {
+  bottom: 0;
+}
+
 .question-reply textarea {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .question-operation > button {
