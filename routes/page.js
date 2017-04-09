@@ -13,5 +13,11 @@ router
   .get('/list', wrap(pageCtrl.list))
   .get('/question', wrap(pageCtrl.question))
   .get('/question/:id', wrap(pageCtrl.questionDetail))
+  .get('/ofo', wrap(function* (req, res) {
+    res.render('demo/ofo', {
+      user: req.session.user,
+      name: 'demo'
+    })
+  }))
 
 module.exports = router
