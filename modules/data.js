@@ -6,10 +6,10 @@ const count = 15
 exports.search = (q, page = 1) => {
   const query = new AV.SearchQuery('Data')
 
+  query.ascending('updatedAt', 'vote')
   query.queryString(`*${q}*`)
   query.limit(count)
   query.skip(count * (page - 1))
-  query.sortBy(new AV.SearchSortBuilder().descending('updatedAt'))
 
   return new Promise((resolve, reject) => {
     query.find()

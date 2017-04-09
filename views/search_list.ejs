@@ -7,7 +7,7 @@
     </div>
     <div class="media-body">
       <h4 class="media-heading">
-        <a href="###"><%= data.docs[i].get('title') %></a>
+        <a href="<%= data.docs[i].get('url') %>"><%= data.docs[i].get('title') %></a>
         <% if (user) { %>
           <% if (user.role === 'investor') { %>
             <a href="###" class="label label-primary get-info">查看资料</a>          

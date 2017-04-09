@@ -9,7 +9,7 @@ exports.search = (q, page = 1) => {
   query.queryString(`*${q}*`)
   query.limit(count)
   query.skip(count * (page - 1))
-  query.sortBy(new AV.SearchSortBuilder().descending('updatedAt'))
+  query.ascending('updatedAt', 'vote')
 
   return new Promise((resolve, reject) => {
     query.find()
