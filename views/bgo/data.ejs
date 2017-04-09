@@ -19,12 +19,16 @@
       </div>
     </nav>
 
-    <form class="data-box" enctype="multipart/form-data" method="post" action="/bgo/data">
+    <form data-toggle="validator" class="data-box" enctype="multipart/form-data" method="post" action="/bgo/data">
       <div class="form-group">
         <label for="title">标题</label>
         <input type="text" name="title" class="form-control" id="title" placeholder="请输入标题" required>
         <label for="tags">分类</label>
         <input type="text" name="tags" class="form-control" id="tags" placeholder="请输入分类，用分号隔开" required>
+        <label for="userId">Lean Cloud UserId</label>
+        <input type="text" name="id" class="form-control" id="userId" placeholder="" required>
+        <label for="url">链接</label>
+        <input type="url" name="url" class="form-control" id="url" placeholder="" required>
         <label for="file">封面图</label>
         <input type="file" name="upload" id="file" multiple="multiple" required>
         <label for="content">正文内容</label>
@@ -33,5 +37,8 @@
       <button type="submit" class="btn btn-primary" id="js-submit">提交</button>
     </form>
   </div>
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+  <script src="/scripts/bootstrap.min.js"></script>
+  <script src="/scripts/validator.min.js"></script>
 </body>
 </html>

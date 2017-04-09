@@ -25,6 +25,8 @@ exports.saveData = function* (req, res) {
               title: fields.title[0],
               content: fields.content[0],
               tags: fields.tags[0].split(';'),
+              url: fields.url[0],
+              user: AV.Object.createWithoutData('_User', fields.id[0]),
               image
             })
 
