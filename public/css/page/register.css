@@ -17,3 +17,12 @@
   padding: 22px 15px;
   margin-top: 10px;
 }
+
+.register-sms-code {
+  position: relative;
+  top: 5px;
+}
+
+.register-go {
+  margin-top: 10px;
+}

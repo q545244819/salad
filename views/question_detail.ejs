@@ -16,7 +16,7 @@
   <div class="container">
     <div class="question-box">
       <h3><%= question.get('title') %></h3>
-      <p class="question-owner">提问者：<%= question.get('user').get('username') %>，日期：<%= `${question.get('createdAt').getFullYear()}-${question.get('createdAt').getMonth() + 1}-${question.get('createdAt').getDate()} ${question.get('createdAt').getHours()}:${question.get('createdAt').getMinutes()}` %></p>
+      <p class="question-owner">提问者：<%= question.get('user').get('name') %>，日期：<%= `${question.get('createdAt').getFullYear()}-${question.get('createdAt').getMonth() + 1}-${question.get('createdAt').getDate()} ${question.get('createdAt').getHours()}:${question.get('createdAt').getMinutes()}` %></p>
       <p><%= question.get('content') %></p>
     </div>
 
@@ -25,7 +25,7 @@
         <% if (answers.length) { %>
           <% for (var i = 0; i < answers.length; i += 1) { %>
             <div class="answer-box">
-              <h4><%= answers[i].get('user').get('username') %></h4>
+              <h4><%= answers[i].get('user').get('name') %></h4>
               <p class="answer-date">回复时间：<%= `${answers[i].get('createdAt').getFullYear()}-${answers[i].get('createdAt').getMonth() + 1}-${answers[i].get('createdAt').getDate()} ${answers[i].get('createdAt').getHours()}:${answers[i].get('createdAt').getMinutes()}` %></p>            
               <div class="content"><%= answers[i].get('content') %></div>
               <div class="answer-operation">

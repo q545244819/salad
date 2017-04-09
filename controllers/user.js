@@ -18,18 +18,19 @@ exports.signIn = function* (req, res) {
 
 exports.register = function* (req, res) {
   const body = req.body
-  const user = new AV.User()
+  let user = null
 
-  user.setUsername(body.username)
-  user.setPassword(body.password)
-  user.setMobilePhoneNumber(body.phone)
+  if (body.code) {
+    user = new AV.User()
 
-  if (body.email) {
-    user.setEmail(body.email)
+    user.setUsername(body.username)
+    user.setPassword(body.password)
+    user.setMobilePhoneNumber(body.phone)
+    user.set('name', body.name)
   }
 
   try {
-    const register = yield user.signUp()
+    const register = body.code ? yield AV.User.signUpOrlogInWithMobilePhone(body.phone, body.code) : yield user.signUp()
     const roleQuery = new AV.Query('_Role')
 
     roleQuery.equalTo('name', body.role)
@@ -40,7 +41,17 @@ exports.register = function* (req, res) {
     
     yield role.save()
 
-    req.session.user = user
+    if (body.code) {
+      const updateUser = AV.Object.createWithoutData('_User', register.get('id'))
+
+      updateUser.set('username', body.username)
+      updateUser.set('password', body.password)
+      updateUser.set('name', body.name)
+
+      user = yield updateUser.save()
+    }
+
+    req.session.user = user || register
 
     res.redirect('/')
   } catch(e) {
@@ -48,4 +59,10 @@ exports.register = function* (req, res) {
 
     res.redirect('/register')
   }
+}
+
+exports.requestSmsCode = function* (req, res) {
+  const query = req.query
+
+  return AV.Cloud.requestSmsCode(query.phone)
 }
