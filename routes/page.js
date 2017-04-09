@@ -19,5 +19,11 @@ router
       name: 'demo'
     })
   }))
+  .get('/wechat', wrap(function* (req, res) {
+    res.render('demo/wechat', {
+      user: req.session.user,
+      name: 'demo'
+    })
+  }))
 
 module.exports = router
