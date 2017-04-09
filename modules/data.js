@@ -6,7 +6,7 @@ const count = 15
 exports.search = (q, page = 1) => {
   const query = new AV.SearchQuery('Data')
 
-  query.ascending('updatedAt', 'vote')
+  query.descending('vote')
   query.queryString(`*${q}*`)
   query.limit(count)
   query.skip(count * (page - 1))

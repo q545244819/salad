@@ -12,7 +12,6 @@
           <% if (user.role === 'investor') { %>
             <a href="###" class="label label-primary get-info">查看资料</a>          
           <% } %>
-          <span class="label label-default js-vote vote">赞</span>
         <% } %>
       </h4>
       <p>
@@ -23,6 +22,7 @@
         <% data.docs[i].get('tags').forEach(item => { %>
           <span class="label label-info"><%= item %></span>
         <% }) %>
+        <span class="label label-default js-vote vote pull-right">赞（<%= data.docs[i].get('vote') %>）</span>
       </div>
     </div>
   </div>

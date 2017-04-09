@@ -31,7 +31,7 @@ exports.find = (page = 1, solve) => {
 
   query.limit(count)
   query.skip(count * (page - 1))
-  query.ascending('updatedAt', 'vote')
+  query.descending('vote')
   query.include('solve', 'user')
   solve ? query.exists('solve') : query.doesNotExist('solve')
 

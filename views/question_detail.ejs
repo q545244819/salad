@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="/css/normalize.css">
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/page/comment.css">
+    <link rel="stylesheet" href="/css/page/search.css">
   <link rel="stylesheet" href="/css/page/question.css">
 </head>
 <body>
@@ -25,6 +26,11 @@
         </span>
       </p>
       <p><%= question.get('content') %></p>
+      <div class="clearfix">
+        <button class="btn btn-defualt js-vote" data-vote="<%= question.get('vote') %>" <% if (!user) { %> disabled="disabled" <% } %> type="button">
+          <i class="glyphicon glyphicon-baby-formula"></i> <span class="badge"><%= question.get('vote') %></span>
+        </button>
+      </div>
     </div>
 
     <div class="rows answer-wrap">
@@ -62,15 +68,7 @@
       </div>
       <div class="col-md-4">
         <p>推荐信息</p>
-        <% for (var i = 0; i < 4; i += 1) {%>
-          <div class="question-box">
-            <h4><a href="###">我国对电商征税吗？电商税务征管目前存在哪些问题和不足？</a></h4>
-            <p class="question-owner">提问者：程天蓝，日期：2015-01-10</p>
-            <p>
-              唉。我国不对电商征税吗？ 当然要征！现在生活中，为什么这部分的征管不能到位呢？ 多种原因。 1.…
-            </p>
-          </div>
-        <% } %>
+        <%- include search_list_right.ejs %>
       </div>
     </div>
   </div>

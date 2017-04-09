@@ -9,7 +9,7 @@ exports.search = (q, page = 1) => {
   query.queryString(`*${q}*`)
   query.limit(count)
   query.skip(count * (page - 1))
-  query.ascending('updatedAt', 'vote')
+  query.descending('updatedAt', 'vote')
 
   return new Promise((resolve, reject) => {
     query.find()
