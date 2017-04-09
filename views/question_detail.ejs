@@ -29,7 +29,7 @@
               <p class="answer-date">回复时间：<%= `${answers[i].get('createdAt').getFullYear()}-${answers[i].get('createdAt').getMonth() + 1}-${answers[i].get('createdAt').getDate()} ${answers[i].get('createdAt').getHours()}:${answers[i].get('createdAt').getMinutes()}` %></p>            
               <div class="content"><%= answers[i].get('content') %></div>
               <div class="answer-operation">
-                <button class="btn btn-defualt disable" <% if (!user) { %> disabled="disabled" <% } %> type="button">
+                <button class="btn btn-defualt js-vote" data-vote="<%= answers[i].get('vote') %>" <% if (!user) { %> disabled="disabled" <% } %> type="button">
                   <i class="glyphicon glyphicon-baby-formula"></i> <span class="badge"><%= answers[i].get('vote') %></span>
                 </button>
                 <button class="btn btn-defualt" type="button">
@@ -71,5 +71,25 @@
   <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
   <script src="/scripts/bootstrap.min.js"></script>
   <script src="/scripts/validator.min.js"></script>
+  <script>
+    $(function() {
+      $('.answer-wrap').on('click', '.js-vote', function () {
+        if ($(this).hasClass('btn-primary')) {
+          const num = parseInt($(this).data('vote')) - 1
+
+          $(this).find('span').text(num)
+          $(this).data('vote', num)
+        } else {
+          const num = parseInt($(this).data('vote')) + 1
+
+          $(this).find('span').text(num)
+          $(this).data('vote', num)
+        }
+
+        $(this).data()
+        $(this).toggleClass('btn-primary')
+      })
+    })
+  </script>
 </body>
 </html>

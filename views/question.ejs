@@ -15,7 +15,7 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-8" id="js-question">
         <form action="/question" method="get">
           <div class="input-group search-box">
             <input type="text" class="form-control" name="q" placeholder="大家都在搜人工智能">
@@ -43,7 +43,7 @@
               <% if (user) { %>
                 <div class="question-operation clearfix">
                   <button type="button" class="btn btn-default btn-xs pull-right">举报</button>
-                  <button type="button" class="btn btn-defualt btn-xs pull-right">有相同痛点</button>
+                  <button type="button" class="btn btn-defualt btn-xs pull-right js-vote">有相同痛点</button>
                   <button type="button" data-id="<%= data.docs[i].get('id') %>" data-title="<%= data.docs[i].get('title') %>" class="btn btn-primary btn-xs pull-right js-reply">回复</button>                          
                 </div>
               <% } %>
@@ -109,7 +109,7 @@
       <textarea name="content" id="" cols="10" rows="4" class="form-control" placeholder="请输入您的回复" id="js-reply-textarea" required></textarea>
       <input type="hidden" name="questionId" id="js-reply-input" required>
       <button type="submit" class="btn btn-primary">提交</button>
-      <button type="button" class="btn btn-danger" id="js-reply-close">关闭</button>
+      <button type="button" class="btn btn-danger " id="js-reply-close">关闭</button>
     </form>
   </div>
 
@@ -128,6 +128,10 @@
       $('#js-reply-close').on('click', function () {
         $('.question-reply').removeClass('show')
         $('#js-reply-textarea').val()
+      })
+
+      $('#js-question').on('click', '.js-vote', function () {
+        $(this).toggleClass('btn-danger')
       })
     })
   </script>
