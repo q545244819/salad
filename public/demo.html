@@ -10,24 +10,46 @@
   <style>
     div {
       position: absolute;
-      top: 50%;
+      z-index: 99;
+      top: 15%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, 0);
       text-align: center;
     }
 
-    img {
+    .img1 {
       display: block;
-      width: 330px;
+      width: 250px;
       height: auto;
       margin-bottom: 150px;
+    }
+
+    .img2 {
+      position: absolute;
+      z-index: 1;
+      top: 17%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      width: 300px;
+      height: auto;
+    }
+
+    .img3 {
+      position: absolute;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: auto;
     }
   </style>
 </head>
 <body>
+  <img src="/image/search.gif" class="img2" alt="">  
   <div>
-    <img src="/image/logo.png" alt="">
+    <img src="/image/logo.png" class="img1" alt="">
     <a href="/" class="btn btn-default">点击进入>></a>    
   </div>
+  <img src="/image/1.png" class="img3" alt="">
 </body>
 </html>
