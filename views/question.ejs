@@ -31,6 +31,11 @@
               <h4><a href="/question/<%= data.docs[i].get('id') %>"><%= data.docs[i].get('title') %></a></h4>
               <p class="question-owner">
                 提问者：<%= data.docs[i].get('user').get('name') %>，日期：<%= `${data.docs[i].get('createdAt').getFullYear()}-${data.docs[i].get('createdAt').getMonth() + 1}-${data.docs[i].get('createdAt').getDate()} ${data.docs[i].get('createdAt').getHours()}:${data.docs[i].get('createdAt').getMinutes()}` %>
+                <span class="label label-primary">
+                  <% if (data.docs[i].get('type') === 'idea') { %> 想法 <% } %>
+                  <% if (data.docs[i].get('type') === 'point') { %> 痛点 <% } %>
+                </span>
+                &nbsp;
                 <% if (!data.docs[i].get('solve')) { %>
                   <span class="label label-warning">未解决</span>
                 <% } else { %>
@@ -76,6 +81,15 @@
                 <div class="form-group">
                   <label for="title">标题（必填）</label>
                   <input type="text" name="title" class="form-control" id="title" data-minlength="5" maxlength="30" placeholder="字数30以内" required>
+                </div>
+                <div class="form-group">
+                  <label for="title">类型（必填）</label>
+                  <label class="radio-inline">
+                    <input type="radio" name="type" id="inlineRadio1" value="idea" checked> 想法
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="type" id="inlineRadio2" value="point"> 痛点
+                  </label>
                 </div>
                 <div class="form-group">
                   <label for="content">详细描述</label>

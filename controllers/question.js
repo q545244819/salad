@@ -14,6 +14,7 @@ exports.create = function* (req, res) {
   const question = new Question({
     title: body.title,
     content: body.content,
+    type: body.type,
     user: AV.Object.createWithoutData('_User', req.session.user.objectId)
   })
   const newQuestion = yield question.save()

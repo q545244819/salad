@@ -15,8 +15,15 @@
 
   <div class="container">
     <div class="question-box">
-      <h3><%= question.get('title') %></h3>
-      <p class="question-owner">提问者：<%= question.get('user').get('name') %>，日期：<%= `${question.get('createdAt').getFullYear()}-${question.get('createdAt').getMonth() + 1}-${question.get('createdAt').getDate()} ${question.get('createdAt').getHours()}:${question.get('createdAt').getMinutes()}` %></p>
+      <h2><%= question.get('title') %></h2>
+      <p class="question-owner">
+        提问者：<%= question.get('user').get('name') %>，
+        日期：<%= `${question.get('createdAt').getFullYear()}-${question.get('createdAt').getMonth() + 1}-${question.get('createdAt').getDate()} ${question.get('createdAt').getHours()}:${question.get('createdAt').getMinutes()}` %>
+        <span class="label label-primary">
+          <% if (question.get('type') === 'idea') { %> 想法 <% } %>
+          <% if (question.get('type') === 'point') { %> 痛点 <% } %>
+        </span>
+      </p>
       <p><%= question.get('content') %></p>
     </div>
 
