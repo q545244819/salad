@@ -1,12 +1,21 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <title>Error</title>
+    <title>有无</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/page/comment.css">
   </head>
   <body>
-    <h1><%= message %></h1>
-    <h2><%= error.status %></h2>
-    <pre><%= error.stack %></pre>
+    <%- include header.ejs %>
+
+    <div class="container">
+      <div class="alert alert-danger" role="alert">
+        <h1><%= message %></h1>
+        <h2><%= error.status %></h2>
+        <pre><%= error.stack %></pre>
+      </div>
+    </div>
   </body>
 </html>
