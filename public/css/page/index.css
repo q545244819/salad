@@ -1,6 +1,11 @@
+.search-title {
+  text-align: center;
+  font-size: 32px;
+}
+
 .search-box {
   width: 700px;
-  margin: 100px auto 0;
+  margin: 30px auto 0;
 }
 
 .search-box > .form-control {
